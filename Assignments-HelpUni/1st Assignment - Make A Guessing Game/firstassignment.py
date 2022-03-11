@@ -1,41 +1,49 @@
 # Imports "random" library for the code to work.
 import random
 
-# The default value since the user didn't input any number yet.
-totalGuesses = 0
+def main():
+    totalGuesses = 0
+    min = 0
+    max = 100
 
-# Generate a random range for the user to guess.
-min = random.randint(1,100)
-max = random.randint(1,100)
+    number = random.randint(min, max)
+    guessedNum = int(input("Range "+str(min)+" --> "+str(max)+" . Your guess? "))
 
-# Chooses a random number from the range for the user to guess.
-number = random.randint(min, max)
+    while guessedNum != number:
+        if guessedNum > number:
+            print('Incorrect!')
+            totalGuesses = totalGuesses + 1
+            temp_max = guessedNum-1
+            guessedNum = int(input("Range "+str(min)+" --> "+str(temp_max)+" . Your guess? "))
+            
+            if guessedNum < number:
+                print('Incorrect!')
+                totalGuesses = totalGuesses + 1
+                temp_min = guessedNum+1
+                guessedNum = int(input("Range "+str(temp_min)+" --> "+str(temp_max)+" . Your guess? "))
 
-# Displays the range of the number to guess
-print('Number ranges from '+str(min)+' to '+str(max))
+        elif guessedNum < number:
+            print('Incorrect!')
+            totalGuesses = totalGuesses + 1
+            temp_min = guessedNum+1
+            guessedNum = int(input("Range "+str(temp_min)+" --> "+str(temp_max)+" . Your guess? "))
 
-# Initiate the loop sequence to make sure that it repeats when the user inserts the incorrect answer
-while totalGuesses != number:
-    print("Number : "+str(number))
-    guess = eval(input("What is your guess? "))
-    guess = int(guess)
+            if guessedNum > number:
+                print('Incorrect!')
+                totalGuesses = totalGuesses + 1
+                temp_max = guessedNum - 1
+                guessedNum = int(input("Range "+str(min)+" --> "+str(temp_max)+" . Your guess? "))
 
-    totalGuesses = totalGuesses + 1
-
-    # It Will display the text below if the user submits the incorrect number.
-    if guess != number:
-        print('Incorrect!')
-
-    # It Will display the text below if the user submits the number correctly.
-    if guess == number:
-        
-        # It will display the text below if user submits the number correctly for less than 5 tries.
+    if guessedNum == number:
+            
         if totalGuesses < 5:  
             print('Congratulation! You have done it in ' + str(totalGuesses) + ' tries!')
             print('You are lucky today!')
 
-        # It Will display the text below if the user submits the number correctly for more than 5 tries.
         else:
             print('Congratulation! You have done it in ' + str(totalGuesses) + ' tries!')
-        break
+
+main()
+
+
 
