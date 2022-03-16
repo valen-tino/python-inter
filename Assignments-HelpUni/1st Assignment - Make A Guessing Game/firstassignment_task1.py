@@ -6,43 +6,36 @@
 
 import random
 
+def range(mini,max):
+    a,b = mini,max
+    return int(input("Range "+str(a)+" --> "+str(b)+" . Your guess? "))
+
 def main():
-    totalGuesses = 0
-    min = 0
-    max = 100
+    totalGuesses = 1
+    mini,max = 0,100
 
-    number = random.randint(min, max)
-    print("Debug Guess : "+str(number)) # Only for testing purposes
-    guessedNum = int(input("Range "+str(min)+" --> "+str(max)+" . Your guess? "))
-
-    def guessed(guessedNum,min,max):
-        guessedNum = int(input("Range "+str(min)+" --> "+str(max)+" . Your guess? "))
-        return guessedNum
-    guessed()
-
-    while guessedNum != number:
-        if guessedNum < min or guessedNum > max:
+    num = random.randint(mini, max)
+    print("Debug Guess : "+str(num)) # Only for testing purposes
+    guessedNum = range(mini,max)
+    
+    while guessedNum != num:
+        if guessedNum < mini or guessedNum > max:
             print('Incorrect!')
-            guessed(guessedNum,min,max)
-            # guessedNum = int(input("Range "+str(min)+" --> "+str(max)+" . Your guess? "))
-        elif guessedNum < number:
-            min = guessedNum + 1
+            guessedNum = range(mini,max)
+
+        elif guessedNum < num:
+            mini = guessedNum + 1
             print('Incorrect!')
-            guessed(guessedNum,min,max)
-            # guessedNum = int(input("Range "+str(min)+" --> "+str(max)+" . Your guess? "))
-        elif guessedNum > number:
+            guessedNum = range(mini,max)
+
+        else:
             max = guessedNum - 1
             print('Incorrect!')
-            guessed(guessedNum,min,max)
-            # guessedNum = int(input("Range "+str(min)+" --> "+str(max)+" . Your guess? "))
-        else:
-            print("Invalid Input, Try Again")
-            guessed(guessedNum,min,max)
-            # guessedNum = int(input("Range "+str(min)+" --> "+str(max)+" . Your guess? "))
+            guessedNum = range(mini,max)
 
         totalGuesses+=1
 
-    if guessedNum == number:
+    if guessedNum == num:
         if totalGuesses < 5:  
             print('Congratulation! You have done it in ' + str(totalGuesses) + ' tries!')
             print('You are lucky today!')
@@ -50,11 +43,3 @@ def main():
             print('Congratulation! You have done it in ' + str(totalGuesses) + ' tries!')
 
 main()
-
-
-
-
-
-
-
-
