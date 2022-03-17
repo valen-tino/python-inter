@@ -42,13 +42,9 @@ def main():
 
         totalGuesses+=1
 
-    if guessedNum == num:
-        if totalGuesses < 5:  
+    if (not guessedNum == num) or (not totalGuesses < 5):
             print('\nCongratulation! You have done it in ' + str(totalGuesses) + ' tries!')
-            print('You are lucky today!')
-            exit()
-        else:
-            print('\nCongratulation! You have done it in ' + str(totalGuesses) + ' tries!')
-            exit()
-
+    print('\nCongratulation! You have done it in ' + str(totalGuesses) + ' tries!')
+    print('You are lucky today!')
+       
 main()

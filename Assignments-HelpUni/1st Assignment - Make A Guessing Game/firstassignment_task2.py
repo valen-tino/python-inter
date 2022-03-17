@@ -8,7 +8,7 @@ import random
 
 # Global Variable
 player1,player2 = "Player 1","Player 2"
-totalGuess = 1
+totalGuess=1
 mini,max = 0,100
 num = random.randint(mini, max)
 
@@ -22,18 +22,20 @@ def range(mini,max):
 # Main Function
 def main():
     # Calls the global variables to be used in the main() function
-    global mini,max,num,player1,player2,totalGuess 
+    global mini,max,num,player1,player2,totalGuess
 
     # makes player1 as default so that everytime the game starts, player 1 will be the first
     player = player1
-    print("Debug Guess : "+str(num)) # Only for testing purposes
+
+    print("\nDebug Guess : "+str(num)) # Only for testing purposes
+
     print(player1)
     guessedNum = range(mini,max)
 
     while (totalGuess):
 
         if guessedNum == num:
-            print("Congratulations! "+player+" wins")
+            print("\nCongratulations! ",player, "wins")
             exit()
             
         elif player == player1:
@@ -69,9 +71,5 @@ def main():
                 max = guessedNum - 1
                 print('Incorrect!\n'+player1)
                 guessedNum = range(mini,max)
-
-        else:
-            print("Both ", player1, " and ", player2, " lose")
-            exit()
 
 main()
