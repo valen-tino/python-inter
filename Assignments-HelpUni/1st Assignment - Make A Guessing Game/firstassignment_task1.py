@@ -3,42 +3,28 @@
 # E2100312
 # Assignment 1
 # Task 1
-
-# Import Random Library
-import random
-
-# Global Variables
-totalGuesses = 1
-mini,max = 0,100
-num = random.randint(mini, max)
-
-# Function to show range
-def range(mini,max):
-    a,b = mini,max
-    return int(input("Range "+str(a)+" --> "+str(b)+" . Your guess? "))
+from random import randint
 
 # Main Function
 def main():
-    # Calls the global variables to be used in the main() function
-    global totalGuesses,mini,max,num
-
-    print("Debug Guess : "+str(num)) # Only for testing purposes
-    guessedNum = range(mini,max)
+    totalGuesses,mini,max = 1,0,100
+    num = randint(mini, max)
+    guessedNum = int(input("Range "+str(mini)+" --> "+str(max)+" . Your guess? "))
     
     while guessedNum != num:
         if guessedNum < mini or guessedNum > max:
             print('Incorrect!\n')
-            guessedNum = range(mini,max)
+            guessedNum = int(input("Range "+str(mini)+" --> "+str(max)+" . Your guess? "))
 
         elif guessedNum < num:
             mini = guessedNum + 1
             print('Incorrect!\n')
-            guessedNum = range(mini,max)
+            guessedNum = int(input("Range "+str(mini)+" --> "+str(max)+" . Your guess? "))
 
         else:
             max = guessedNum - 1
             print('Incorrect!\n')
-            guessedNum = range(mini,max)
+            guessedNum = int(input("Range "+str(mini)+" --> "+str(max)+" . Your guess? "))
 
         totalGuesses+=1
 
