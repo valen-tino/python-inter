@@ -14,7 +14,7 @@ def main():
     num = randint(mini, max)
     player = player1
 
-    print("\nDebug Guess : "+str(num)+"\n"+player) # Only for testing purposes
+    print(player) # Only for testing purposes
     guessedNum = int(input("Number ranges from "+str(mini)+" to "+str(max)+".\nWhat's your guess? "))
 
     while (totalGuess):

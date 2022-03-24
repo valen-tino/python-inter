@@ -13,7 +13,6 @@ def main():
     num = randint(mini, max)
     player = mainPlayer
 
-    print("\nDebug Guess : "+str(num)) # Only for testing purposes
     print("Player: "+player)
     guessedNum = int(input("Number ranges from "+str(mini)+" to "+str(max)+".\nWhat's your guess? "))
 
