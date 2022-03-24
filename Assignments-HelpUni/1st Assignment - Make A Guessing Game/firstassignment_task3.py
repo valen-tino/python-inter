@@ -6,72 +6,68 @@
 
 from random import randint
 
-# Main Function
-def computer_guess(num):
-    low = 1
-    high = 100
-    guess = (low+high)//2
-    while guess != num:
-        guess = (low+high)//2
-        print("The computer takes a guess...", guess)
-        if guess > num:
-            high = guess
-        elif guess < num:
-            low = guess + 1
-
-    print("The computer guessed", guess, "and it was correct!")
-
-
 def main():
-    player1,comp = "Player 1","Computer"
-    totalGuess,mini,max = 1,0,100
-    num,player = randint(mini, max),player1
+    mainPlayer,comp = "Player","Computer"
+    totalGuess = 1
+    mini,max = 0,100
+    num = randint(mini, max)
+    player = mainPlayer
 
-    print("\nDebug Guess : "+str(num)+"\n"+player) # Only for testing purposes
+    print("\nDebug Guess : "+str(num)) # Only for testing purposes
+    print("Player: "+player)
     guessedNum = int(input("Number ranges from "+str(mini)+" to "+str(max)+".\nWhat's your guess? "))
 
     while (totalGuess):
-        if guessedNum == num:                            
-            print("\nCongratulations! ",player, "wins")
-            exit()
-            
-        elif player == player1:z
+        
+        if player == mainPlayer:
             player = comp
-            if guessedNum < mini or guessedNum > max: 
+            if guessedNum == num:   
+                player = mainPlayer                        
+                print("\n",player,"wins")
+                exit() 
+            elif guessedNum < mini or guessedNum > max: 
                 print('Incorrect!\n')
-                print(player)
-                guessedNum = int(input("Number ranges from "+str(mini)+" to "+str(max)+".\nWhat's your guess? "))
-
+                print('Player:',player)
             elif guessedNum < num:
                 mini = guessedNum + 1
                 print('Incorrect!\n')
-                print(player)
-                guessedNum = int(input("Number ranges from "+str(mini)+" to "+str(max)+".\nWhat's your guess? "))
-
+                print('Player:',player)
             else:
                 max = guessedNum - 1
                 print('Incorrect!\n')
-                print(player)
-                guessedNum = int(input("Number ranges from "+str(mini)+" to "+str(max)+".\nWhat's your guess? "))
-    
-        elif player == comp:
-            player = player1
-            if guessedNum < mini or guessedNum > max: 
-                print('Incorrect!\n')
-                print(player)
-                guessedNum = int(input("Number ranges from "+str(mini)+" to "+str(max)+".\nWhat's your guess? "))
+                print('Player:',player)
+                    
+        if player == comp:
+            player = mainPlayer
+            computerResult = randint(mini,max)
 
-            elif guessedNum < num:
-                mini = guessedNum + 1
-                print('Incorrect!\n')
-                print(player)
-                guessedNum = int(input("Number ranges from "+str(mini)+" to "+str(max)+".\nWhat's your guess? "))
+            def compShow(mini,max,computerResult):
+                var_low,var_high = mini,max
+                results = computerResult
+                var = print("Number ranges from "+str(var_low)+" to "+str(var_high)+".")
+                var = print('Computer choose',results)
+                return var
 
+            if computerResult == num:  
+                player = comp
+                compShow(mini,max,computerResult)                       
+                print("\n",player,"wins") 
+                exit() 
+            elif computerResult < mini or computerResult > max: 
+                compShow(mini,max,computerResult)                       
+                print('Incorrect!\n')
+                print('Player:',player)
+            elif computerResult < num:
+                mini = computerResult + 1
+                compShow(mini,max,computerResult)                       
+                print('Incorrect!\n')
+                print('Player:',player)
             else:
-                max = guessedNum - 1
+                max = computerResult - 1
+                compShow(mini,max,computerResult)                       
                 print('Incorrect!\n')
-                print(player)
-                guessedNum = int(input("Number ranges from "+str(mini)+" to "+str(max)+".\nWhat's your guess? "))
-    
+                print('Player:',player)
+            
+        guessedNum = int(input("Number ranges from "+str(mini)+" to "+str(max)+".\nWhat's your guess? "))
 
 main()

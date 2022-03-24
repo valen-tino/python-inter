@@ -14,18 +14,13 @@ def main():
     while guessedNum != num:
         if guessedNum < mini or guessedNum > max:
             print('Incorrect!\n')
-            guessedNum = int(input("Range "+str(mini)+" --> "+str(max)+" . Your guess? "))
-
         elif guessedNum < num:
             mini = guessedNum + 1
             print('Incorrect!\n')
-            guessedNum = int(input("Range "+str(mini)+" --> "+str(max)+" . Your guess? "))
-
         else:
             max = guessedNum - 1
             print('Incorrect!\n')
-            guessedNum = int(input("Range "+str(mini)+" --> "+str(max)+" . Your guess? "))
-
+        guessedNum = int(input("Range "+str(mini)+" --> "+str(max)+" . Your guess? "))
         totalGuesses+=1
 
     if (not guessedNum == num) or (not totalGuesses < 5):
