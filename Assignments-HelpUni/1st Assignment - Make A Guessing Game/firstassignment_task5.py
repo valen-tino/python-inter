@@ -23,6 +23,7 @@ def dealWithATurn(currentUser,start,end):
         max_value = currentGuess - 1
     if currentGuess != randNum:
         print("Incorrect!\n")
+dealWithATurn()
 
 def displayFinalResult(pSC,cSC):
     print("Score: 'Human': "+str(pSC)+" 'Computer': "+str(cSC)+".",end = ' ')
@@ -30,6 +31,7 @@ def displayFinalResult(pSC,cSC):
         print("Winner is Player")
     else:
         print("Winner is Computer")
+displayFinalResult()
 
 def main():
     var_game = 1
