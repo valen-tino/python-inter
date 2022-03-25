@@ -33,8 +33,7 @@ def displayFinalResult(pSC,cSC):
 
 def main():
     var_game = 1
-    player = "Player"
-    comp = "Computer"
+    player,comp = "Player","Computer"
     playerScoreCount = 0
     compScoreCount = 0
 
