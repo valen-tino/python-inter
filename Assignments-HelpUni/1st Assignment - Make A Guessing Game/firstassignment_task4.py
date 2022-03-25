@@ -6,89 +6,64 @@
 
 from random import randint
 
-# Guess The Number!
-# Valentino Yudhistira Jehaut
-# E2100312
-# Assignment 1
-# Task 3 (Player vs Computer)
-
-from random import randint
-from timeit import repeat
-
 def main():
-    mainPlayer,comp = "Player","Computer"
-    totalGuess = 1
-    mini,max = 0,100
-    
     var_game = 1
-    #This code is used to insert the player's guess number for the first time 
-    while var_game < 3:  
-        num = randint(mini, max)
-        player = mainPlayer
-        print("Game",var_game)
-        print("Player: "+player)
-        guessedNum = int(input("Number ranges from "+str(mini)+" to "+str(max)+".\nWhat is your guess? "))
+    player,comp = "Player","Computer"
+    countScorePlayer = 0
+    countScoreComp = 0
 
-        #The totalGuess's fixed variable is used to activate the codes below
-        while (totalGuess):
-            # This code runs when it's the player's turn
-            if player == mainPlayer:
-                player = comp
+    # This code is used to run the game on loop sequence 
+    while True:
+        currentGuess,counts = -1,0
+        low_value,max_value = 0,100
+        randNum = randint(low_value, max_value)
 
-                # This code validates the player's answer and compares it with the answer of the game
-                if guessedNum == num:   
-                    player = mainPlayer                        
-                    print("\n"+player+" wins")
-                    var_game = var_game + 1 
-                    repeat(var_game)
-                elif guessedNum < mini or guessedNum > max: 
-                    print('Incorrect!\n')
-                    print('Player:',player)
-                elif guessedNum < num:
-                    mini = guessedNum + 1
-                    print('Incorrect!\n')
-                    print('Player:',player)
-                else:
-                    max = guessedNum - 1
-                    print('Incorrect!\n')
-                    print('Player:',player)
+        # This code displays the current game
+        print("Game:",str(var_game))
+        while currentGuess != randNum:
+            if counts%2 == 0:
+                currentUser = player
+            else:
+                currentUser = comp
 
-            # This code runs when it's the computer's turn            
-            if player == comp:
-                player = mainPlayer
-                computerResult = randint(mini,max)
+            print("Debug Number:",randNum)
 
-                # Function to show the result from the computer
-                def compShow(mini,max,computerResult):
-                    var_low,var_high = mini,max
-                    results = computerResult
-                    print("Number ranges from "+str(var_low)+" to "+str(var_high)+".")
-                    print('Computer guess',results)
+            #This code displays the current player and the range of the answer
+            print("Player:",currentUser)
+            print("Range "+str(low_value)+" --> "+str(max_value)+".",end = ' ')
 
-                # This code validates the computer's answer and compares it with the answer of the game
-                if computerResult == num:  
-                    player = comp
-                    compShow(mini,max,computerResult)                       
-                    print("\n"+player+" wins") 
-                    var_game = var_game + 1  
-                    repeat(var_game)
+            #This code chooses when
+            if currentUser == player:
+                currentGuess = eval(input("Your guess? "))
+            elif currentUser == comp:
+                currentGuess = randint(low_value,max_value)
+                print("Computer guess "+str(currentGuess))
+            
+            #
+            counts = counts + 1
+            if currentGuess < randNum:
+                low_value = currentGuess + 1
+            if currentGuess > randNum:
+                max_value = currentGuess - 1
+            if currentGuess != randNum:
+                print("Incorrect!\n")
+        
+        #
+        print(currentUser,"wins\n")
+        if currentUser == player:
+            countScorePlayer = countScorePlayer + 1
+        elif currentUser == comp:
+            countScoreComp = countScoreComp + 1
 
-                elif computerResult < mini or computerResult > max: 
-                    compShow(mini,max,computerResult)                       
-                    print('Incorrect!\n')
-                    print('Player:',player)
-                elif computerResult < num:
-                    mini = computerResult + 1
-                    compShow(mini,max,computerResult)                       
-                    print('Incorrect!\n')
-                    print('Player:',player)
-                else:
-                    max = computerResult - 1
-                    compShow(mini,max,computerResult)                       
-                    print('Incorrect!\n')
-                    print('Player:',player)
+        if countScorePlayer == 3 or countScoreComp == 3:
+            #
+            print("Score: 'Human': "+str(countScorePlayer)+" 'Computer': "+str(countScoreComp)+".",end = ' ')
+            if countScorePlayer > countScoreComp:
+                print("Winner is Player")
+            else:
+                print("Winner is Computer")
+            break
 
-            #This code is used to insert the player's guess number everytime the player's turn   
-            guessedNum = int(input("Number ranges from "+str(mini)+" to "+str(max)+".\nWhat is your guess? "))
-
+        var_game+=1
+            
 main()

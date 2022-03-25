@@ -7,29 +7,30 @@ from random import randint
 
 # Main Function
 def main():
-    totalGuesses,mini,max = 1,0,100
-    num = randint(mini, max)
+    totalGuesses = 1
+    low_value,max_value = 0,100
+    randNum = randint(low_value, max_value)
 
     #This code is used to insert the player's guess number for the first time
-    guessedNum = int(input("Range "+str(mini)+" --> "+str(max)+". Your guess? "))
+    playerGuessNumber = int(input("Range "+str(low_value)+" --> "+str(max_value)+". Your guess? "))
     
     # This code validates the player's answer and compares it with the answer of the game
-    while guessedNum != num:
-        if guessedNum < mini or guessedNum > max:
+    while playerGuessNumber != randNum:
+        if playerGuessNumber < low_value or playerGuessNumber > max_value:
             print('Incorrect!\n')
-        elif guessedNum < num:
-            mini = guessedNum + 1
+        elif playerGuessNumber < randNum:
+            low_value = playerGuessNumber + 1
             print('Incorrect!\n')
         else:
-            max = guessedNum - 1
+            max_value = playerGuessNumber - 1
             print('Incorrect!\n')
 
         #This code is used to insert the player's guess number everytime the player's turn
-        guessedNum = int(input("Range "+str(mini)+" --> "+str(max)+". Your guess? "))
+        playerGuessNumber = int(input("Range "+str(low_value)+" --> "+str(max_value)+". Your guess? "))
         totalGuesses+=1
 
     #This code validates the guessed Number and checks
-    if (not guessedNum == num) or (not totalGuesses < 5):
+    if (not playerGuessNumber == randNum) or (not totalGuesses < 5):
             print('\nCongratulation! You have done it in ' + str(totalGuesses) + ' tries!')
     print('\nCongratulation! You have done it in ' + str(totalGuesses) + ' tries!')
     print('You are lucky today!')

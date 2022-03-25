@@ -9,50 +9,49 @@ from random import randint
 # Main Function
 def main():
     player1,player2 = "Player 1","Player 2"
-    totalGuess = 1
-    mini,max = 0,100
-    num = randint(mini, max)
-    player = player1
+    low_value,max_value = 0,100
+    randNum = randint(low_value, max_value)
+    currentPlayer = player1
 
     #This code is used to insert the player's guess number for the first time
-    print(player) 
-    guessedNum = int(input("Number ranges from "+str(mini)+" to "+str(max)+".\nWhat is your guess? "))
+    print(currentPlayer) 
+    playerGuessNumber = int(input("Number ranges from "+str(low_value)+" to "+str(max_value)+".\nWhat is your guess? "))
 
     #The totalGuess's fixed variable is used to activate the codes below
-    while (totalGuess):
+    while True:
         # This code runs when the result from one of the players matches with the answer
-        if guessedNum == num:
-            print("\nCongratulations! ",player, "wins")
+        if playerGuessNumber == randNum:
+            print("\nCongratulations! ",currentPlayer, "wins")
             exit()
         
         # This code runs when it's the first player's turn
-        elif player == player1:
-            player = player2
+        elif currentPlayer == player1:
+            currentPlayer = player2
             # This code validates the player's answer and compares it with the answer of the game
-            if guessedNum < mini or guessedNum > max: 
+            if playerGuessNumber < low_value or playerGuessNumber > max_value: 
                 print('Incorrect!\n')
-            elif guessedNum < num:
-                mini = guessedNum + 1
+            elif playerGuessNumber < randNum:
+                low_value = playerGuessNumber + 1
                 print('Incorrect!\n')
             else:
-                max = guessedNum - 1
+                max_value = playerGuessNumber - 1
                 print('Incorrect!\n')
         
         # This code runs when it's the second player's turn
-        elif player == player2:
-            player = player1
+        elif currentPlayer == player2:
+            currentPlayer = player1
             # This code validates the player's answer and compares it with the answer of the game
-            if guessedNum < mini or guessedNum > max: 
+            if playerGuessNumber < low_value or playerGuessNumber > max_value: 
                 print('Incorrect!\n')
-            elif guessedNum < num:
-                mini = guessedNum + 1
+            elif playerGuessNumber < randNum:
+                low_value = playerGuessNumber + 1
                 print('Incorrect!\n')
             else:
-                max = guessedNum - 1
+                max_value = playerGuessNumber - 1
                 print('Incorrect!\n')
         
         #This code is used to insert the player's guess number everytime the player's turn
-        print(player)
-        guessedNum = int(input("Number ranges from "+str(mini)+" to "+str(max)+".\nWhat is your guess? "))
+        print(currentPlayer)
+        playerGuessNumber = int(input("Number ranges from "+str(low_value)+" to "+str(max_value)+".\nWhat is your guess? "))
 
 main()
