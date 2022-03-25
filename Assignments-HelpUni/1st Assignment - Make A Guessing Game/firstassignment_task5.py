@@ -2,7 +2,7 @@
 # Valentino Yudhistira Jehaut
 # E2100312
 # Assignment 1
-# Task 5 (Player vs Computer with Game Sessions)
+# Task 5 (Player vs Computer with Game Sessions and custom functions)
 
 from random import randint
 
