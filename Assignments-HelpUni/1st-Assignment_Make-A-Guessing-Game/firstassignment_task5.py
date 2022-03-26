@@ -6,12 +6,14 @@
 
 from random import randint
 
-def dealWithATurn(currentUser,low_value,max_value):
-    #This code chooses when
-    if currentUser == "Player":
+def dealWithATurn(currentPlayer,start,end):
+    print("Player:",currentPlayer)
+    print("Range "+str(start)+" --> "+str(end)+".",end = ' ')
+
+    if currentPlayer == "Player":
         currentGuess = eval(input("Your guess? "))
-    elif currentUser == "Computer":
-        currentGuess = randint(low_value,max_value)
+    elif currentPlayer == "Computer":
+        currentGuess = randint(start,end)
         print("Computer guess "+str(currentGuess))
     return currentGuess
 
@@ -31,37 +33,34 @@ def main():
     # This code is used to run the game on loop sequence 
     while True:
         currentGuess,counts = -1,0
-        low_value,max_value = 0,100
-        randNum = randint(low_value, max_value)
+        start,end = 0,100
+        randNum = randint(start, end)
 
         # This code displays the current game
         print("Game:",str(var_game))
         while currentGuess != randNum:
             
             if counts%2 == 0:
-                currentUser = player
+                currentPlayer = "Player"
             else:
-                currentUser = comp
+                currentPlayer = "Computer"
             
             print("Debug Number:",randNum)
-            print("Player:",currentUser)
-            print("Range "+str(low_value)+" --> "+str(max_value)+".",end = ' ')
-            currentGuess = dealWithATurn(currentUser,low_value,max_value)
+            currentGuess = dealWithATurn(currentPlayer,start,end)
 
             counts = counts + 1
-
             if currentGuess < randNum:
-                low_value = currentGuess + 1
+                start = currentGuess + 1
             if currentGuess > randNum:
-                max_value = currentGuess - 1
+                end = currentGuess - 1
             if currentGuess != randNum:
                 print("Incorrect!\n")
         
         #
-        print(currentUser,"wins\n")
-        if currentUser == player:
+        print(currentPlayer,"wins\n")
+        if currentPlayer == player:
             countScorePlayer = countScorePlayer + 1
-        elif currentUser == comp:
+        elif currentPlayer == comp:
             countScoreComp = countScoreComp + 1
 
         if countScorePlayer == 3 or countScoreComp == 3:
