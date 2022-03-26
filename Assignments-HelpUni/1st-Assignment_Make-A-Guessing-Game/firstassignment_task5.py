@@ -6,38 +6,27 @@
 
 from random import randint
 
-def dealWithATurn(currentUser,start,end):
-    player,comp = "Player","Computer"
-    randNum = randint(start,end)
-
-    if currentUser == player:
+def dealWithATurn(currentUser,low_value,max_value):
+    #This code chooses when
+    if currentUser == "Player":
         currentGuess = eval(input("Your guess? "))
-    elif currentUser == comp:
+    elif currentUser == "Computer":
         currentGuess = randint(low_value,max_value)
         print("Computer guess "+str(currentGuess))
-    
-    counts = counts + 1
-    if currentGuess < randNum:
-        low_value = currentGuess + 1
-    if currentGuess > randNum:
-        max_value = currentGuess - 1
-    if currentGuess != randNum:
-        print("Incorrect!\n")
-dealWithATurn()
+    return currentGuess
 
-def displayFinalResult(pSC,cSC):
+def displayFinalResult(pSC,cSC): # Done
     print("Score: 'Human': "+str(pSC)+" 'Computer': "+str(cSC)+".",end = ' ')
     if pSC > cSC:
         print("Winner is Player")
     else:
         print("Winner is Computer")
-displayFinalResult()
 
 def main():
     var_game = 1
     player,comp = "Player","Computer"
-    playerScoreCount = 0
-    compScoreCount = 0
+    countScorePlayer = 0
+    countScoreComp = 0
 
     # This code is used to run the game on loop sequence 
     while True:
@@ -48,31 +37,37 @@ def main():
         # This code displays the current game
         print("Game:",str(var_game))
         while currentGuess != randNum:
+            
             if counts%2 == 0:
                 currentUser = player
             else:
                 currentUser = comp
-
+            
             print("Debug Number:",randNum)
-
-            #This code displays the current player and the range of the answer
             print("Player:",currentUser)
             print("Range "+str(low_value)+" --> "+str(max_value)+".",end = ' ')
+            currentGuess = dealWithATurn(currentUser,low_value,max_value)
 
-            #This code chooses when
-            dealWithATurn(currentUser,low_value,max_value)
+            counts = counts + 1
+
+            if currentGuess < randNum:
+                low_value = currentGuess + 1
+            if currentGuess > randNum:
+                max_value = currentGuess - 1
+            if currentGuess != randNum:
+                print("Incorrect!\n")
         
         #
         print(currentUser,"wins\n")
         if currentUser == player:
-            playerScoreCount = playerScoreCount + 1
+            countScorePlayer = countScorePlayer + 1
         elif currentUser == comp:
-            compScoreCount = compScoreCount + 1
+            countScoreComp = countScoreComp + 1
 
-        if playerScoreCount == 3 or compScoreCount == 3:
-            #
-            displayFinalResult(playerScoreCount,compScoreCount)
-            break
+        if countScorePlayer == 3 or countScoreComp == 3:
+            
+            displayFinalResult(countScorePlayer,countScoreComp)
+            exit()
 
         var_game+=1
             

@@ -30,9 +30,10 @@ def main():
         totalGuesses+=1
 
     #This code validates the guessed Number and checks
-    if (not playerGuessNumber == randNum) or (not totalGuesses < 5):
-            print('\nCongratulation! You have done it in ' + str(totalGuesses) + ' tries!')
-    print('\nCongratulation! You have done it in ' + str(totalGuesses) + ' tries!')
-    print('You are lucky today!')
-       
+    if totalGuesses < 5:
+        print('\nCongratulation! You have done it in ' + str(totalGuesses) + ' tries!')
+        print('You are lucky today!')
+    else:
+        print('\nCongratulation! You have done it in ' + str(totalGuesses) + ' tries!')
+          
 main()
