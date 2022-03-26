@@ -4,7 +4,7 @@
 # Assignment 1
 # Task 4 (Player vs Computer with Game Sessions)
 
-from random import randint
+import random
 
 def main():
     var_game = 1
@@ -16,7 +16,7 @@ def main():
     while True:
         currentGuess,counts = -1,0
         low_value,max_value = 0,100
-        randNum = randint(low_value, max_value)
+        randNum = random.randint(low_value, max_value)
 
         # This code displays the current game
         print("Game:",str(var_game))
@@ -36,7 +36,7 @@ def main():
             if currentUser == player:
                 currentGuess = eval(input("Your guess? "))
             elif currentUser == comp:
-                currentGuess = randint(low_value,max_value)
+                currentGuess random.randint(low_value,max_value)
                 print("Computer guess "+str(currentGuess))
             
             #
