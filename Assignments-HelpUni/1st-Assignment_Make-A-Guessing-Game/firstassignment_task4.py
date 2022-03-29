@@ -26,10 +26,16 @@ def main():
         print("Game:",str(var_game))
         while currentGuess != randNum:
             
-            if counts%2 == 0:
-                currentUser = player
+            if var_game%2 == 0:
+                if counts%2 == 0:
+                    currentUser = comp
+                else:
+                    currentUser = player
             else:
-                currentUser = comp
+                if counts%2 == 0:
+                    currentUser = player
+                else:
+                    currentUser = comp
         
             print("Debug Number:",randNum) # Testing Only
 

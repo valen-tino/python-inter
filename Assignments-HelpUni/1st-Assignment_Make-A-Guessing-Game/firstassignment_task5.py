@@ -40,11 +40,17 @@ def main():
         print("Game:",str(var_game))
         while currentGuess != randNum:
             
-            if counts%2 == 0:
-                currentPlayer = "Player"
+            if var_game%2 == 0:
+                if counts%2 == 0:
+                    currentPlayer = "Computer"
+                else:
+                    currentPlayer = "Player"
             else:
-                currentPlayer = "Computer"
-            
+                if counts%2 == 0:
+                    currentPlayer = "Player"
+                else:
+                    currentPlayer = "Computer"
+                    
             print("Debug Number:",randNum)
             currentGuess = dealWithATurn(currentPlayer,start,end)
 
