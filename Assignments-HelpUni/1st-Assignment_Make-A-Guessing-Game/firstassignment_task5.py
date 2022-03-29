@@ -6,10 +6,9 @@
 
 from random import randint
 
-def dealWithATurn(currentPlayer,start,end):
+def dealWithATurn(currentPlayer,start,end): # Done
     print("Player:",currentPlayer)
     print("Range "+str(start)+" --> "+str(end)+".",end = ' ')
-
     if currentPlayer == "Player":
         currentGuess = eval(input("Your guess? "))
     elif currentPlayer == "Computer":
@@ -17,9 +16,9 @@ def dealWithATurn(currentPlayer,start,end):
         print("Computer guess "+str(currentGuess))
     return currentGuess
 
-def displayFinalResult(pSC,cSC): # Done
-    print("Score: 'Human': "+str(pSC)+" 'Computer': "+str(cSC)+".",end = ' ')
-    if pSC > cSC:
+def displayFinalResult(currentPlayerScore,currentCompScore): # Done
+    print("Score: 'Human': "+str(currentPlayerScore)+" 'Computer': "+str(currentCompScore)+".",end = ' ')
+    if currentPlayerScore > currentCompScore:
         print("Winner is Player")
     else:
         print("Winner is Computer")
@@ -27,11 +26,12 @@ def displayFinalResult(pSC,cSC): # Done
 def main():
     var_game = 1
     player,comp = "Player","Computer"
-    countScorePlayer = 0
-    countScoreComp = 0
+    currentPlayerScore = 0
+    currentCompScore = 0
+    keep_playing = "True"
 
     # This code is used to run the game on loop sequence 
-    while True:
+    while keep_playing == "True":
         currentGuess,counts = -1,0
         start,end = 0,100
         randNum = randint(start, end)
@@ -59,14 +59,14 @@ def main():
         #
         print(currentPlayer,"wins\n")
         if currentPlayer == player:
-            countScorePlayer = countScorePlayer + 1
+            currentPlayerScore = currentPlayerScore + 1
         elif currentPlayer == comp:
-            countScoreComp = countScoreComp + 1
+            currentCompScore = currentCompScore + 1
 
-        if countScorePlayer == 3 or countScoreComp == 3:
+        if currentPlayerScore == 3 or currentCompScore == 3:
             
-            displayFinalResult(countScorePlayer,countScoreComp)
-            exit()
+            displayFinalResult(currentPlayerScore,currentCompScore)
+            keep_playing = "False"
 
         var_game+=1
             
