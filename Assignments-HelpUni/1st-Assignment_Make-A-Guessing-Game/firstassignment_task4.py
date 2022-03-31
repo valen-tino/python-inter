@@ -26,6 +26,8 @@ def main():
 
         # This code displays the current game session
         print("Game:",str(var_game))
+
+        #This code is used to run the game if the player/computer guessed number isn't the same as the answer
         while currentGuess != randomNumber:
             
             # This code is used to switch positions if the player/computer wins
@@ -65,6 +67,8 @@ def main():
                 low_value = currentGuess + 1
             if currentGuess > randomNumber:
                 max_value = currentGuess - 1
+
+            #This code is used to display "Incorrect" if the player/computer guessed number isn't the same as the answer    
             if currentGuess != randomNumber:
                 print("Incorrect!\n")
 

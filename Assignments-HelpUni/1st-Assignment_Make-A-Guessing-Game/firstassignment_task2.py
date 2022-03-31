@@ -49,9 +49,13 @@ def main():
         
         # This code is used to select when it's the second player's turn
         elif currentPlayer == player2:
+
+            #This code is used to switch turns from player2 to player1 after the game displays the result
             currentPlayer = player1
             # This code validates the player's answer and compares it with the answer of the game
             if playerGuessNumber < low_value or playerGuessNumber > max_value: 
+
+                #This code will display "Incorrect" if the player's guess isn't the same as the answer
                 print('Incorrect!\n')
 
             #This code is used to increase/decrease the range each time player2 enters their guessed number

@@ -43,7 +43,7 @@ def main():
                 #This code is used to end the game
                 keep_playing == "False" 
 
-            #This code is used to reject player's guess if the min & max value is above the current min & max value
+            #This code is used to reject player's guess if the player's guess is above/below the current min & max value
             elif playerGuessNumber < low_value or playerGuessNumber > max_value: 
                 print('Incorrect!\n')
 
@@ -90,7 +90,9 @@ def main():
             
             #This code is used to reject computer's guess if the min & max value is above the current min & max value
             elif computerResult < low_value or computerResult > max_value: 
-                compShow(low_value,max_value,computerResult)                       
+                compShow(low_value,max_value,computerResult)        
+
+                #This code will display "Incorrect" if the computer's guess isn't the same as the answer               
                 print('Incorrect!\n')
 
                 #This code is used to show the next user's turn
