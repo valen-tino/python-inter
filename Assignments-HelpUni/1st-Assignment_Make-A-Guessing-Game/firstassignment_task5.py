@@ -64,7 +64,7 @@ def main():
     keep_playing = "True"
     theWinner = player
 
-    # This code is used to run the game on loop sequence 
+    # This code is used to run the game on loop sequence
     while keep_playing == "True":
         currentGuess = -1
         totalCounts = 0
